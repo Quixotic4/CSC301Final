@@ -2,21 +2,17 @@
 
 include('config.php');
 
-
-$league = $_GET['league'];
 $team = $_GET['teamname'];
-$standing = $_GET['Position'];
 
-$sql = file_get_contents('SQL/addTeam.sql');
+$sql = file_get_contents('SQL/getTeamStats.sql');
 $params = array(
-	'team' => $team,
-	'league' => $league,
-	'rank' => $standing
+	'teamname' => $team
 );
 $statement = $database->prepare($sql);
 $statement->execute($params);
-$leagueNamesAssoc = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+$teamNameAssoc = $statement->fetchAll(PDO::FETCH_ASSOC);
+	
+	
 ?>
 
 <!doctype html>
@@ -36,10 +32,16 @@ $leagueNamesAssoc = $statement->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 	<div class="page">
-	<h2>Team Added</h2>
-	<?php echo $team;?><br>
 	
-	<a href="addPlayer.php?team=<?php echo $team ?>">Add Players</a>
+	<?php foreach($teamNameAssoc as $category): ?>
+		<?php echo "Team Name: " . $category['teamname'];?><br>
+		<?php echo "Position In League: " . $category['standing'];?><br>
+		<?php echo "Games Won: " . $category['wins'];?><br>
+		<?php echo "Games Tied: " . $category['draws'];?><br>
+		<?php echo "Games Lost: " . $category['loses'];?><br>
+	<?php endforeach; ?>
+	
+	
 	
 	<p>
 		<a href="Main.php">Back</a>

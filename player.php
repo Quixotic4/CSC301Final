@@ -4,7 +4,6 @@ include('config.php');
 
 $player = $_GET['specificPlayer'];
 
-// Get book categories
 $sql = file_get_contents('SQL/getPlayer.sql');
 $params = array(
 	'player' => $player

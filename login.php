@@ -1,9 +1,8 @@
 <?php
 
-//
 include('config.php');
 
-include('functions.php');
+//include('functions.php');
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -11,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	
-	
+
 	$sql = file_get_contents('sql/Login.sql');
 	$params = array(
 		'username' => $username,
@@ -19,18 +18,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	);
 	$statement = $database->prepare($sql);
 	$statement->execute($params);
-	$users = $statement->fetchAll(PDO::FETCH_ASSOC);
+	$editors = $statement->fetchAll(PDO::FETCH_ASSOC);
 	
 	
-	if(!empty($users)) {
+	if(!empty($editors)) {
 		
-		$user = $users[0];
+		$editor = $editors[0];
+	
 		
-		$_SESSION['editorid'] = $user['editorid'];
+		$_SESSION['editorID'] = $editor['editorid'];
 		
-		header('location: addTeam.php');
+		
+		header('location: Main.php');
 	}
 }
+
 
 ?>
 

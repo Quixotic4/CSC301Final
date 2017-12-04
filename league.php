@@ -21,7 +21,6 @@ foreach($leagueNamesAssoc as $category) {
 	$teams[] = $category['teamname'];
 }
 
-
 ?>
 
 <!doctype html>
@@ -43,7 +42,7 @@ foreach($leagueNamesAssoc as $category) {
 	<div class="page">
 	
 	<?php foreach($teams as $category): ?>
-		<?php echo $category; ?><br>
+		<?php echo $category;?><br>
 	<?php endforeach; ?>
 	
 	<p>

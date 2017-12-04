@@ -1,3 +1,26 @@
+<?php
+
+include('config.php');
+
+$editorID= $_SESSION['editorID'];
+
+$sql = file_get_contents('sql/getEditor.sql');
+	$params = array(
+		'editorid' => $editorID
+	);
+	$statement = $database->prepare($sql);
+	$statement->execute($params);
+	$editors = $statement->fetchAll(PDO::FETCH_ASSOC);
+	
+	$editor = $editors[0];
+
+
+
+
+?>
+
+
+
 
 <!doctype html>
 <html lang="en">
@@ -44,6 +67,14 @@
 		</div>
 		</form>
 		
+		<h2>Team Stats</h2>
+		<form action="team.php">
+		<div class="form-element">
+			<input type="text" name="teamname" placeholder="Enter Team Name..." />
+			<input type="submit" class="button" />
+		</div>
+		</form>
+		
 		<h2>Add A Team</h2>
 		<form action="addTeam.php">
 		<div class="form-element">
@@ -55,7 +86,9 @@
 		</form>
 		
 		
-		<!--</form>-->
+		
+		
+		<p><a href="logout.php">Log Out</a></p>
 	</div>
 </body>
 </html>

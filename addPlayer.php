@@ -4,7 +4,7 @@ include('config.php');
 $team = $_GET['team'];
 
 ?>
-//
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,7 +22,6 @@ $team = $_GET['team'];
 </head>
 <body>
 	<div class="page">
-	
 
 	<h2>Player Name</h2>
 		<form action="playerAdded.php">

@@ -1,19 +1,22 @@
 body {
-	background-color: blue;
+	background-color: coral;
 	box-sizing: content-box;
 	font-family: arial;
+	border: dashed;
 }
 
 * {
 	margin: 3px;
 	padding: 10px;
 	box-sizing: inherit;
+	
 }
 
 .page {
-	max-width: 600px;
+	max-width: 800px;
 	margin: 10px auto;
-	background-color: green;
-	padding: 20px 30px;
+	text-align: center;
+	background-color: gray;
+	padding: 0px 30px;
 }
 
