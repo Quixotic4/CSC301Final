@@ -1,0 +1,7 @@
+Get Teams
+
+Select * From Teams
+
+Select goalsScored From Players
+Where name = :name
+
